@@ -2,7 +2,6 @@ $(document).ready(function(){
 
     // this solution doesnt handle multiple board sizes unfortunately
     var heights = [0,0,0,0,0,0,0];
-    var gameOver = false;
     var numPlayers = 1;
 
     var count = 0; // tracks the number of dots dropped. doesn't make sense to se
@@ -22,7 +21,6 @@ $(document).ready(function(){
         }
     }
 
-    // function that handles the dropping of a dot
     var dropDot = function(dot, color){
         var column = dot.attr("data-dropColumn");
         var yPos = heights[column];
@@ -77,6 +75,7 @@ $(document).ready(function(){
 
     };
 
+    // checking order based on ease of calculation. trivial, but hey
     var checkForWin = function(column, yPos, color){
         if(count >= 7){ //no use checking if you havent played at leasy 4 of one color
             var length = 0;
@@ -112,7 +111,9 @@ $(document).ready(function(){
             length = 0;
 
         // check ascending diagonal
-        for(var y = 2; y >= 0; y--){ // starting with the top-left most possibility
+        // diagonals could almost certaily be checked more efficienctly
+        // but this works
+        for(var y = 2; y >= 0; y--){
             for(var x = 0; x+y < 7; x++){
                 var dot = $(".dot[data-column='" + x + "'][data-row='" + (y+x) + "']");
                 if(dot.hasClass(color)){
