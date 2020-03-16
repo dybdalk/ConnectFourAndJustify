@@ -25,7 +25,7 @@ $(document).ready(function(){
     // function that handles the dropping of a dot
     var dropDot = function(dot, color){
         var column = dot.attr("data-dropColumn");
-        var yPos = heights[column]; 
+        var yPos = heights[column];
         if (yPos > 5){
             illegalMove();
         }else{
@@ -147,7 +147,6 @@ $(document).ready(function(){
                 var dot = $(".dot[data-column='" + x + "'][data-row='" + (y-x) + "']");
                 if(dot.hasClass(color)){
                     length++;
-                    console.log()
                 }
                 else{
                     length = 0;
@@ -203,8 +202,6 @@ $(document).ready(function(){
         heights = [0,0,0,0,0,0,0];
         count = 0;
         changeColor("red");
-        $(".end-popup").addClass("hidden");
-        $(".end-popup__text").addClass("hidden");
         $(".options-wrapper").removeClass("hidden");
         $(".game-wrapper").addClass("hidden");
     }
@@ -213,7 +210,13 @@ $(document).ready(function(){
         dropDot($(this), color);
     });
 
+    $(".reset-button").click( function(){
+        resetBoard();
+    });
+
     $(".play-button").click(function(){
+        $(".end-popup").addClass("hidden");
+        $(".end-popup__text").addClass("hidden");
         resetBoard();
     });
 
