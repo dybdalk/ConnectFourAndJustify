@@ -1,0 +1,60 @@
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+
+    <!-- honestly I just get super annoyed by pages without favicons, sorry if this is overboard -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- jquery just because it's easy for me to target elements -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="main.js"></script>
+    <script src="justify.js"></script>
+    <title>Kyle's Connect 4</title>
+</head>
+<body>
+    <div class="header">
+        <a class="logo" href="index.html"><img src="logo.png" alt="just picture the mastercard logo and you'll get the idea"></a>
+    </div>
+    <div class="main-wrapper">
+        <h1 class="page-title">Connect Four</h1>
+        <h1 class="subtitle">The game where you don't just connect 3</h2>
+        <h1 class="sub-subtitle">(you actually have to connect 4 in a row that's why they call it that)</h2>
+
+        <div class="options-wrapper">
+            <div class="options-coin red" data-players="1">
+                    <div class="options-coin__number">1</div>
+            </div>
+            <div class="options-text">
+                Choose <span class="options-text__highlight one">1 player <div class="options-helptext one">You'll play as red, against the computer who will be yellow</div></span> or <span class="options-text__highlight two">2 players <div class="options-helptext two"><b>Warning:</b> only use this mode if you're lucky enough to have a friend willing to play with you</div></span>
+            </div>
+            <div class="options-coin yellow" data-players="2">
+                <div class="options-coin__number">2</div>
+            </div>
+        </div>
+        <div class="game-wrapper hidden">
+            <div class="turn-text"><h1>It's <span class="turn red">RED's</span> turn</h1></div>
+            <div class="drop-row red">
+                <div data-dropColumn="0" class="drop-dot"></div>
+                <div data-dropColumn="1" class="drop-dot"></div>
+                <div data-dropColumn="2" class="drop-dot"></div>
+                <div data-dropColumn="3" class="drop-dot"></div>
+                <div data-dropColumn="4" class="drop-dot"></div>
+                <div data-dropColumn="5" class="drop-dot"></div>
+                <div data-dropColumn="6" class="drop-dot"></div>
+            </div>
+            <!-- I'm certain there's a cleaner way to arrange this, generate it programatically, etc-->
+            <div class="game-board">
+                
+            </div>
+            <div class="error-popup">Fun Fact! You're actaully not allowed to do that</div>
+        </div>
+    </div>
+    <div class="end-popup hidden">
+        <div class="end-popup__container">
+            <div class="end-popup__text draw hidden">Is this a sketch? Because it's a draw</div>
+            <div class="end-popup__text win hidden"> wins!</div>
+            <button class="play-button">Let's play again!</button>
+        </div>
+    </div>
+</body>

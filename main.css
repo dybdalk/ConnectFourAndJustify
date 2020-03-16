@@ -1,0 +1,332 @@
+/* i usually use css resets to avoid some simple bugs, but omitted this for the sake of clarity/brevity */
+
+html{
+    font-family: "Oswald", Helvetica, sans-serif;
+    height: 100vh;
+    overflow: auto;
+}
+
+body{
+    background: #00d5ff;
+    background: linear-gradient(0deg, #00d5ff 0%, #118de0 100%);
+    margin:0;
+    overflow: auto;
+    height: 100%;
+}
+
+.logo img{
+    width: 150px;
+    position: absolute;
+    top: -20px;
+}
+
+/* with more time and a precompiler like Sass, there'd be
+better organization and less duplication, but hey, it works */
+
+h1{
+    color: #fff;
+    text-align: center;
+    width: 100%;
+}
+
+.page-title{
+    font-size: 65px;
+    margin-top: 20px;
+}
+
+.subtitle{
+    font-size: 30px;
+    margin-top: -40px;
+}
+
+.sub-subtitle{
+    font-size: 18px;
+    margin-top: -20px;
+}
+
+.options-wrapper{
+    display: flex;
+    width: 700px;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 45px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.options-coin{
+    cursor: pointer;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 8px 10px rgba(0,0,0, 0.3);
+    transition: all .2s ease-in-out;
+}
+
+.options-coin:hover{
+    transform: translateY(-5px);
+    box-shadow: 0px 13px 10px rgba(0,0,0, 0.3);
+}
+.options-coin:active{
+    transform: translateY(0);
+    box-shadow: 0px 3px 5px rgba(0,0,0, 0.3);
+}
+
+.options-coin__number{
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    text-shadow: 0px 0px 2px rgba(0,0,0, 0.3);
+}
+
+.options-coin.red{
+    background-color: #f5426c;
+}
+
+.options-coin.yellow{
+    background-color: #ebe267;
+}
+
+.options-text{
+    color: #fff;
+    font-size: 35px;
+    cursor: default;
+}
+
+.options-helptext{
+    opacity: 0;
+    position: absolute;
+    font-size: 14px;
+    color: #333;
+    width: 240px;
+    text-align: center;
+    background-color: white;
+    padding: 12px;
+    border-radius: 14px;
+    box-shadow: 0px 8px 10px rgba(0,0,0, 0.2);
+    margin-top: 20px;
+    margin-left: 30px;
+    transform: translateY(-10px);
+    transition: all .3s ease-in-out;
+}
+
+.options-helptext.two{
+    margin-left: 160px;
+}
+
+/* triangle code modified from https://leaverou.github.io/bubbly/ */
+.options-helptext:after { 
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border: 12px solid transparent;
+	border-bottom-color: #fff;
+	border-top: 0;
+	margin-left: -20px;
+    margin-top: -12px;
+    
+}
+
+.options-text__highlight:hover .options-helptext{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.options-text__highlight{
+    text-decoration: underline;
+}
+
+.turn-text{
+    margin-top: 20px;
+}
+
+.turn-text h1{
+    font-size: 25px;
+}
+
+.turn.red{
+    color: #f5426c;
+    font-weight: bold;
+}
+
+.turn.yellow{
+    color: #ebe267;
+    font-weight: bold;
+}
+.drop-row{
+    height: 50px;
+    width: 350px;
+    box-sizing: border-box;
+    border: 19px solid transparent;
+    margin: 40px auto 10px auto;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: 14% 14% 14% 14% 14% 14% 14%;
+    grid-template-rows: 100%;
+}
+
+.drop-dot{
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    transition: all .2s;
+    transition: transform .3s ease-in;
+    transform: translateY(0);
+    border: 4px solid rgba(83, 63, 63, 0.2);
+}
+
+.drop-row.red .drop-dot:hover,
+.drop-row.red .drop-dot.red.falling{
+    background-color: #f5426c;
+}
+
+.drop-row.yellow .drop-dot:hover,
+.drop-row.yellow .drop-dot.yellow.falling{
+    background-color: #ebe267;
+}
+
+/* have to change how far coin falls. easier to do with Sass variables */
+.drop-dot.falling.row0{
+    transform: translateY(300px);
+}
+.drop-dot.falling.row1{
+    transform: translateY(250px);
+}
+.drop-dot.falling.row2{
+    transform: translateY(200px);
+}
+.drop-dot.falling.row3{
+    transform: translateY(150px);
+}
+.drop-dot.falling.row4{
+    transform: translateY(100px);
+}
+.drop-dot.falling.row5{
+    transform: translateY(50px);
+}
+
+
+.game-board{
+    border: 19px solid #667799;
+    box-shadow: 0px 8px 10px rgba(0,0,0, 0.2);
+    border-radius: 10px;
+    box-sizing: border-box;
+    height: 300px;
+    width: 350px;
+    margin: 0 auto;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: 14% 14% 14% 14% 14% 14% 14%;
+    grid-template-rows: 16.6% 16.6% 16.6% 16.6% 16.6% 16.6%;
+}
+
+.dot{
+    height: 50px;
+    width: 50px;
+    background: radial-gradient(circle at center, transparent 50%, #667799 50%);
+}
+
+.dot.red{
+    background: radial-gradient(circle at center, #f5426c 50%, #667799 50%);
+}
+
+.dot.yellow{
+    background: radial-gradient(circle at center, #ebe267 50%, #667799 50%);
+}
+
+.error-popup{
+    opacity: 0;
+    font-size: 14px;
+    color: #333;
+    width: 240px;
+    text-align: center;
+    background-color: white;
+    padding: 12px;
+    border: solid 2px #f5426c;
+    border-radius: 14px;
+    box-shadow: 0px 8px 10px rgba(0,0,0, 0.2);
+    margin-top: 20px;
+    margin-left: 160px;
+    transform: translateY(-10px);
+    transition: all .3s ease-in-out;
+}
+.error-popup.active{
+    opacity: 1;
+    transform: translateY(-40px);
+}
+
+.end-popup{
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,.3);
+    z-index: 10;
+}
+
+.end-popup__container{
+    box-sizing: border-box;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding: 25px;
+    background: #667799;
+    height: 150px;
+    width: 360px;
+}
+
+.end-popup__text{
+    font-size: 28px;
+    color: #fff;
+}
+
+.play-button{
+    cursor: pointer;
+    background-color: #118de0;
+    font-family: "Oswald", Helvetica, sans-serif; /* side note, I usually do css resets at the beginning of the file to avoid this type of thing*/
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    margin-top: 20px;
+    width: 150px;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.4);
+    transition: all .1s;
+}
+
+.end-popup__text .winner.red{
+    font-weight: bold;
+    color: #f5426c;
+}
+
+.end-popup__text .winner.yellow{
+    font-weight: bold;
+    color: #ebe267;
+}
+
+.play-button:active{
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.4);
+}
+
+.hidden{
+    display: none;
+}
